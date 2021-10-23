@@ -8,11 +8,13 @@ const typeDefs = gql`
   }
 
   type Animal {
+    id: ID!
     image: String!
     title: String!
     rating: Float
     price: String!
     description: [String!]
+    slug: String!
     stock: String!
     onSale: Boolean
   }
@@ -20,6 +22,7 @@ const typeDefs = gql`
   type Query {
     mainCards: [MainCard]
     animals: [Animal]
+    animal(slug: String!): Animal
   }
 `
 
@@ -27,6 +30,13 @@ const resolvers = {
   Query: {
     mainCards: () => mainCards,
     animals: () => animals,
+    animal: (parent, {slug}, context) => {
+      console.log(slug)
+      let animalToFind = animals.find(
+        (anim) => anim.slug.toLowerCase() === slug.toLowerCase(),
+      )
+      return animalToFind
+    },
   },
 }
 
