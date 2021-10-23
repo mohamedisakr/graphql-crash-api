@@ -1,27 +1,32 @@
 const {ApolloServer, gql} = require('apollo-server')
-const {mainCards} = require('./data')
+const {mainCards, animals} = require('./data')
 
 const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
-  }
-
   type MainCard {
     title: String
     image: String
   }
 
+  type Animal {
+    image: String!
+    title: String!
+    rating: Float
+    price: String!
+    description: [String!]
+    stock: String!
+    onSale: Boolean
+  }
+
   type Query {
-    books: [Book]
     mainCards: [MainCard]
+    animals: [Animal]
   }
 `
 
 const resolvers = {
   Query: {
-    books: () => books,
     mainCards: () => mainCards,
+    animals: () => animals,
   },
 }
 

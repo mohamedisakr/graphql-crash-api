@@ -220,6 +220,11 @@ module.exports = {
 }
 
 /*
+  type Book {
+    title: String
+    author: String
+  }
+
   type Person {
     name: String!
     phone: String
@@ -228,7 +233,7 @@ module.exports = {
     id: ID!
   }
 
-    type Query {
+    type Query {          
     books: [Book]
     mainCards: [MainCard]
     personCount: Int!
