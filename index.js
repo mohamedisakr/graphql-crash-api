@@ -17,6 +17,7 @@ const typeDefs = gql`
     slug: String!
     stock: String!
     onSale: Boolean
+    category: Category
   }
 
   type Category {
@@ -24,6 +25,7 @@ const typeDefs = gql`
     image: String!
     category: String!
     slug: String!
+    animals: [Animal!]!
   }
 
   type Query {
@@ -59,6 +61,18 @@ const resolvers = {
       console.log(id)
       let animalToFind = animals.find((anim) => anim.id === id)
       return animalToFind
+    },
+  },
+  Category: {
+    animals: (parent, args, context) => {
+      console.log(parent)
+      return animals.filter((ani) => ani.category === parent.id)
+    },
+  },
+  Animal: {
+    category: (parent, args, context) => {
+      console.log(parent)
+      return categories.find((cate) => cate.id === parent.category)
     },
   },
 }

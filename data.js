@@ -157,24 +157,28 @@ const categories = [
     image: 'tiger',
     category: 'cats',
     slug: 'cats',
+    // animals: [{id: '1'}],
   },
   {
     id: '2',
     image: 'snake',
     category: 'reptiles',
     slug: 'reptiles',
+    // animals: [{id: '2'}],
   },
   {
     id: '3',
     image: 'stingray',
     category: 'ocean creatures',
     slug: 'ocean-creatures',
+    // animals: [{id: '3'}],
   },
   {
     id: '4',
     image: 'donkey',
     category: 'mammals',
     slug: 'mammals',
+    // animals: [{id: '4'}, {id: '5'}, {id: '6'}, {id: '7'}, {id: '8'}],
   },
 ]
 
@@ -218,6 +222,15 @@ module.exports = {
   books,
   persons,
 }
+
+const getAllItemsInCategory = (categoryId) => {
+  const animalsInCategory = animals
+    .filter(({category}) => category === categoryId)
+    .map(({id}) => id)
+  return animalsInCategory
+}
+
+// console.log(getAllItemsInCategory('4'))
 
 /*
   type Book {
