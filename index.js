@@ -1,12 +1,14 @@
 const {ApolloServer} = require('apollo-server')
 const {mainCards, animals, categories} = require('./data')
 const typeDefs = require('./schema')
+const Mutation = require('./resolvers/mutation')
 const Query = require('./resolvers/query')
 const Category = require('./resolvers/category')
 const Animal = require('./resolvers/animal')
 
 const resolvers = {
   Query,
+  Mutation,
   Category,
   Animal,
 }
