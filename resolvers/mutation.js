@@ -29,6 +29,14 @@ const Mutation = {
     animals.push(newAnimal)
     return newAnimal
   },
+
+  removeAnimal: (parent, args, {animals}) => {
+    const {id} = args
+    // animals = animals.filter((item) => item.id !== id)
+    const index = animals.findIndex((item) => item.id === id)
+    animals.splice(index, 1)
+    return true
+  },
 }
 
 module.exports = Mutation
